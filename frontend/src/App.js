@@ -15,7 +15,6 @@ const App = () => {
         <Container>
           <Routes>
             <Route path='/' element={<HomeScreen />} />
-            //id now needs : in 6
             <Route path='/product/:id' element={<ProductScreen />} />
           </Routes>
         </Container>

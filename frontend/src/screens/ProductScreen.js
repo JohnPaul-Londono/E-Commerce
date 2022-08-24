@@ -1,13 +1,26 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap'
 import Rating from '../components/Rating'
-import products from '../products'
+import axios from 'axios'
 
-const ProductScreen = () => {
+const ProductScreen = ({ match }) => {
     //use of params allows us to not destructure even though we are using a hard code
-    const params = useParams();
-    const product = products.find((p) => p._id === params.id)
+    // const params = useParams();
+    // const product = products.find((p) => p._id === params.id)
+
+    const [product, setProduct] = useState([]);
+    const { id } = useParams();
+
+    useEffect(() => {
+        const fetchProduct = async () => {
+            const { data } = await axios.get(`/api/products/${id}`)
+
+            setProduct(data)
+        }
+
+        fetchProduct()
+    }, [])
 
     return (
         <div>
