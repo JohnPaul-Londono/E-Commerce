@@ -1,15 +1,14 @@
 import express from 'express'
 import asyncHandler from 'express-async-handler'
-
-const router = express.Router()
 import Product from "../models/productModel.js"
+const router = express.Router()
+
 
 //@desc fetch all products
 //@route     GET/API/products
 //@ACCESS   public route
 router.get('/', asyncHandler(async (req, res) => {
     const products = await Product.find({})
-
     res.json(products)
 }))
 
@@ -28,6 +27,7 @@ router.get('/:id', asyncHandler(async (req, res) => {
         throw new Error('Product Not Found')
     }
 }))
+
 
 
 export default router
