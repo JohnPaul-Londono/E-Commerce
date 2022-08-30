@@ -25,6 +25,7 @@ export const cartSlice = createSlice({
             }
         }
     }
+    
 })
 
 export const { cart_add_item } = cartSlice.actions
