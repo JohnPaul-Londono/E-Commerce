@@ -23,11 +23,17 @@ export const cartSlice = createSlice({
                     cartItems: [...state.cartItems, item]
                 }
             }
+        },
+        cart_remove_item: (state, action) => {
+            return {
+                ...state,
+                cartItems: state.cartItems.filter(x => x.product !== action.payload)
+            }
         }
     }
     
 })
 
-export const { cart_add_item } = cartSlice.actions
+export const { cart_add_item, cart_remove_item } = cartSlice.actions
 
 export default cartSlice.reducer
